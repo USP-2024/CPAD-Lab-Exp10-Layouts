@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LayoutsDemoMaui.MainPage"
+             BackgroundColor="{StaticResource PageBackground}">
+
+    <!-- Step 1: ScrollView is the outermost element and has exactly ONE child -->
+    <ScrollView>
+
+        <!-- Backbone: one vertical StackLayout holding every section -->
+        <StackLayout Padding="20,40,20,20" Spacing="20">
+
+            <!-- Step 2: Header = Label + AbsoluteLayout (bell icon with overlapping badge) -->
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Grid.Column="0"
+                       Text="Dashboard"
+                       FontSize="28"
+                       FontAttributes="Bold"
+                       TextColor="{StaticResource PrimaryText}"
+                       VerticalOptions="Center" />
+
+                <AbsoluteLayout Grid.Column="1" WidthRequest="48" HeightRequest="48"
+                                VerticalOptions="Center">
+                    <Image Source="bell.png"
+                           AbsoluteLayout.LayoutBounds="0,8,40,40"
+                           AbsoluteLayout.LayoutFlags="None" />
+                    <BoxView Color="Red" CornerRadius="10"
+                             AbsoluteLayout.LayoutBounds="26,0,20,20"
+                             AbsoluteLayout.LayoutFlags="None" />
+                    <Label Text="3" TextColor="White" FontSize="12" FontAttributes="Bold"
+                           HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                           AbsoluteLayout.LayoutBounds="26,0,20,20"
+                           AbsoluteLayout.LayoutFlags="None" />
+                </AbsoluteLayout>
+            </Grid>
+
+            <!-- Step 3: Profile card = Frame > Grid (2 columns) > StackLayout inside a cell -->
+            <Frame CornerRadius="12" HasShadow="True" Padding="15"
+                   BackgroundColor="White" BorderColor="#E0E0E0">
+                <Grid ColumnSpacing="15" ColumnDefinitions="80,*">
+                    <Image Grid.Column="0" Source="profile.png"
+                           WidthRequest="80" HeightRequest="80" Aspect="AspectFill" />
+
+                    <StackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                        <Label Text="Unnathi Patil" FontSize="20" FontAttributes="Bold"
+                               TextColor="{StaticResource PrimaryText}" />
+                        <Label Text="Mobile App Developer" FontSize="14"
+                               TextColor="{StaticResource SecondaryText}" />
+                    </StackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- Step 4: Statistics row = 3 equal cells, each a small vertical StackLayout -->
+            <Grid ColumnDefinitions="*,*,*">
+                <StackLayout Grid.Column="0" Spacing="0">
+                    <Label Text="128" FontSize="22" FontAttributes="Bold"
+                           HorizontalOptions="Center" TextColor="{StaticResource PrimaryText}" />
+                    <Label Text="Posts" FontSize="12" HorizontalOptions="Center"
+                           TextColor="{StaticResource SecondaryText}" />
+                </StackLayout>
+                <StackLayout Grid.Column="1" Spacing="0">
+                    <Label Text="2.4K" FontSize="22" FontAttributes="Bold"
+                           HorizontalOptions="Center" TextColor="{StaticResource PrimaryText}" />
+                    <Label Text="Followers" FontSize="12" HorizontalOptions="Center"
+                           TextColor="{StaticResource SecondaryText}" />
+                </StackLayout>
+                <StackLayout Grid.Column="2" Spacing="0">
+                    <Label Text="310" FontSize="22" FontAttributes="Bold"
+                           HorizontalOptions="Center" TextColor="{StaticResource PrimaryText}" />
+                    <Label Text="Following" FontSize="12" HorizontalOptions="Center"
+                           TextColor="{StaticResource SecondaryText}" />
+                </StackLayout>
+            </Grid>
+
+            <!-- Step 5: Tag list = FlexLayout with Wrap enabled -->
+            <Label Text="Interests" FontSize="16" FontAttributes="Bold"
+                   TextColor="{StaticResource PrimaryText}" />
+            <FlexLayout Wrap="Wrap" Direction="Row"
+                        JustifyContent="Start" AlignItems="Start">
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="Design" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="Mobile" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="UI" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="Xamarin" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="C#" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="Cross-Platform" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="XAML" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+                <Frame CornerRadius="16" Padding="12,6" Margin="0,0,8,8" HasShadow="False" BorderColor="#E8EAF6" BackgroundColor="#E8EAF6">
+                    <Label Text="Layouts" FontSize="13" TextColor="{StaticResource Accent}" />
+                </Frame>
+            </FlexLayout>
+
+            <!-- Step 6: Closing action button -->
+            <Button Text="View Full Profile"
+                    BackgroundColor="{StaticResource Accent}"
+                    TextColor="White"
+                    CornerRadius="22"
+                    Padding="30,10"
+                    HorizontalOptions="Center"
+                    Clicked="OnViewProfileClicked" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
